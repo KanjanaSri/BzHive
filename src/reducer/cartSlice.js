@@ -18,7 +18,11 @@ const cartSlice = createSlice({
       if (cartItem) {
         const newCart = [...state.cart].map((item) => {
           if (item.id === action.payload.id) {
-            return { ...item, amount: cartItem.amount + 1 };
+            return {
+              ...item,
+              amount: cartItem.amount + 1,
+              totalItemPrice: item.price * (item.amount + 1),
+            };
           } else return item;
         });
         state.cart = newCart;

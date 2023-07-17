@@ -23,7 +23,7 @@ export default function ProductDetails() {
   const { title, price, description, image } = product;
 
   return (
-    <section className="py-5 lg:py-32 h-screen flex items-center">
+    <section className="py-20 lg:py-32 h-full flex items-center">
       <div className="container md:px-20 mx-auto">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="flex flex-1 justify-center items-center mb-8 lg:mb-0">
