@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// Image by <a href="https://www.freepik.com/free-vector/white-abstract-background_11852424.htm#query=minimal%20bg&position=22&from_view=search&track=ais">Freepik</a>
+
 export default function Hero() {
   return (
     <section className="h-[80vh] bg-hero bg-no-repeat bg-cover bg-center relative">
@@ -25,7 +25,7 @@ export default function Hero() {
       <p className=" text-sm font-thin text-gray-400 absolute right-3 bottom-2">
         Image by{" "}
         <a
-          href="https://www.freepik.com/free-vector/white-abstract-background_11852424.htm#query=minimal%20bg&position=22&from_view=search&track=ais"
+          href="https://www.freepik.com/free-vector/white-abstract-background_11852424.htm#from_view=search&track=ais"
           target="_blank"
         >
           Freepik

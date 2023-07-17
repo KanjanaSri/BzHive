@@ -1,14 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
-import { SidebarContext } from "../contexts/SidebarContext";
-import { CartContext } from "../contexts/CartContext";
+import React, { useState, useEffect } from "react";
 import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { openSidebar } from "../reducer/sidebarSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotalCartQuantity } from "../reducer/cartSlice";
 
 export default function Header() {
+  const dispatch = useDispatch();
   // header state
   const [isActive, setIsActive] = useState(false);
-  const { isOpen, setIsOpen } = useContext(SidebarContext);
-  const { itemAmount } = useContext(CartContext);
+  const quantity = useSelector(getTotalCartQuantity);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -29,12 +30,12 @@ export default function Header() {
           </div>
         </Link>
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => dispatch(openSidebar())}
           className="cursor-pointer flex relative right-2"
         >
           <BsBag className="text-2xl" />
           <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
-            {itemAmount}
+            {quantity}
           </div>
         </div>
       </div>

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../contexts/CartContext";
-import { ProductContext } from "../contexts/ProductContext";
+import { getAllProducts } from "../reducer/productSlice";
+import { addToCart } from "../reducer/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const { products } = useContext(ProductContext);
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const products = useSelector(getAllProducts);
 
   //get the signgle product base on id
   const product = products.find((item) => item.id === parseInt(id));
@@ -41,7 +42,7 @@ export default function ProductDetails() {
             </div>
             <p className="mb-8">{description}</p>
             <button
-              onClick={() => addToCart(product, product.id)}
+              onClick={() => dispatch(addToCart(product))}
               className="bg-primary py-4 px-8 text-white uppercase"
             >
               Add to cart

@@ -1,18 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
-import { CartContext } from "../contexts/CartContext";
-
-// category: "women's clothing"
-// descriptio: "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem"
-// id: 18
-// image: "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg"
-// price: 9.85
-// rating: {rate: 4.7, count: 130}
-// title: "MBJ Women's Solid Short Sleeve Boat Neck V "
+import { addToCart } from "../reducer/cartSlice";
+import { useDispatch } from "react-redux";
 
 export default function Products({ product }) {
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
   const { id, image, category, title, price } = product;
 
   return (
@@ -27,11 +20,7 @@ export default function Products({ product }) {
             />
           </div>
           <div className="absolute top-6 -right-11 group-hover:right-5 p-2 flex flex-col items-center justify-center gap-y-2 opacity-0 group-hover:opacity-100 transition-all ">
-            <button
-              onClick={() => {
-                addToCart(product, id);
-              }}
-            >
+            <button onClick={() => dispatch(addToCart(product))}>
               <div className="flex justify-center items-center text white w-12 h-12 bg-red-500">
                 <BsPlus className="text-3xl" />
               </div>

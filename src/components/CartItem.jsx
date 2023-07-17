@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { IoMdClose, IoMdRemove, IoMdAdd } from "react-icons/io";
-import { CartContext } from "../contexts/CartContext";
+import { useDispatch } from "react-redux";
+import {
+  deleteFromCart,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+} from "../reducer/cartSlice";
 
 export default function CartItem({ item }) {
-  const { removeFromCart, increaseAmount, decreaseAmount } =
-    useContext(CartContext);
+  const dispatch = useDispatch();
   const { id, title, image, price, amount } = item;
 
   return (
@@ -24,7 +28,7 @@ export default function CartItem({ item }) {
               {title}
             </Link>
             <div
-              onClick={() => removeFromCart(id)}
+              onClick={() => dispatch(deleteFromCart(id))}
               className="text-xl cursor-pointer"
             >
               <IoMdClose className="text-gray-500 hover:text-red-500 transition" />
@@ -35,7 +39,7 @@ export default function CartItem({ item }) {
           <div className="flex gap-x-2 h-[36px] text-sm">
             <div className="flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium">
               <div
-                onClick={() => decreaseAmount(id)}
+                onClick={() => dispatch(decreaseItemQuantity(id))}
                 className="flex-1 h-full flex justify-center items-center cursor-pointer"
               >
                 <IoMdRemove />
@@ -44,7 +48,7 @@ export default function CartItem({ item }) {
                 {amount}
               </div>
               <div
-                onClick={() => increaseAmount(id)}
+                onClick={() => dispatch(increaseItemQuantity(id))}
                 className="flex-1 h-full flex justify-center items-center cursor-pointer"
               >
                 <IoMdAdd />
