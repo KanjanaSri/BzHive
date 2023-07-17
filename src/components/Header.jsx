@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTotalCartQuantity } from "../reducer/cartSlice";
 
 export default function Header() {
-  const dispatch = useDispatch();
   // header state
   const [isActive, setIsActive] = useState(false);
   const quantity = useSelector(getTotalCartQuantity);
 
+  const dispatch = useDispatch();
   useEffect(() => {
     window.addEventListener("scroll", () => {
       window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
