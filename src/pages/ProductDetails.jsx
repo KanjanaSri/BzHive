@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAllProducts } from "../reducer/productSlice";
 import { addToCart } from "../reducer/cartSlice";
@@ -22,6 +22,10 @@ export default function ProductDetails() {
 
   const { title, price, description, image } = product;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="py-20 lg:py-32 h-full flex items-center">
       <div className="container md:px-20 mx-auto">
@@ -34,7 +38,7 @@ export default function ProductDetails() {
             />
           </div>
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
+            <h1 className="text-xl sm:text-2xl font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
               {title}
             </h1>
             <div className="text-xl text-red-500 font-medium mb-6">
