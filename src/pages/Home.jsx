@@ -39,7 +39,7 @@ export default function Home() {
     <div>
       <Hero />
       <Categories />
-      <section className="p-16">
+      <section className="py-16 sm:px-16">
         <div className="container mx-auto">
           {productStatus === "loading" && <Loader />}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">

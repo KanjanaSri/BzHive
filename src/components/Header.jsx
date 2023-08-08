@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { PiShoppingCartSimpleLight } from "react-icons/pi";
+import { GoHome } from "react-icons/go";
+
 import { openSidebar } from "../reducer/sidebarSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotalCartQuantity } from "../reducer/cartSlice";
@@ -21,21 +23,31 @@ export default function Header() {
     <header
       className={`${
         isActive ? "bg-white shadow-md" : "bg-none"
-      } py-3 px-10 fixed w-full z-10 transition-all`}
+      } py-3 sm:px-10 fixed w-full z-10 transition-all`}
     >
-      <div className="container mx-auto flex items-center justify-between h-full">
+      <div className="container md:px-10 mx-auto flex items-center justify-between h-full">
         <Link to={"/"}>
           <div>
-            <img className="w-[80px]" src={"/logo.png"} alt="logo" />
+            <img
+              className="w-[50px] sm:w-[80px]"
+              src={"/logo.png"}
+              alt="logo"
+            />
           </div>
         </Link>
-        <div
-          onClick={() => dispatch(openSidebar())}
-          className="cursor-pointer flex relative right-2"
-        >
-          <BsBag className="text-2xl" />
-          <div className="bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
-            {quantity}
+        <div className="flex justify-center items-center gap-4">
+          <Link to={"/"}>
+            <GoHome className="text-2xl sm:text-3xl" />
+          </Link>
+
+          <div
+            onClick={() => dispatch(openSidebar())}
+            className="cursor-pointer flex relative"
+          >
+            <PiShoppingCartSimpleLight className="text-2xl sm:text-3xl" />
+            <div className="bg-red-500 absolute -right-3 -bottom-1 text-[12px] w-[18px] h-[18px] text-white rounded-full flex justify-center items-center">
+              {quantity}
+            </div>
           </div>
         </div>
       </div>

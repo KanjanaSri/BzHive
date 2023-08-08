@@ -23,7 +23,7 @@ export default function CartItem({ item }) {
           <div className="flex justify-between mb-2">
             <Link
               to={`/product/${id}`}
-              className="text-sm uppercase font-medium max-w-[240px] text-primary hover:underline"
+              className="text-xs sm:text-sm uppercase font-medium max-w-[240px] text-primary hover:underline"
             >
               {title}
             </Link>
@@ -36,7 +36,7 @@ export default function CartItem({ item }) {
           </div>
 
           {/* quantity & price */}
-          <div className="flex gap-x-2 h-[36px] text-sm">
+          <div className="flex gap-x-2 h-[36px] text-xs sm:text-sm">
             <div className="flex flex-1 max-w-[100px] items-center h-full border text-primary font-medium">
               <div
                 onClick={() => dispatch(decreaseItemQuantity(id))}
